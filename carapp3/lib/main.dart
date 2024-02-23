@@ -37,16 +37,51 @@ class HomePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20.0),
-            Image.asset(
+        GestureDetector( 
+
+              onHorizontalDragEnd: (details) { 
+
+                  if (details.primaryVelocity! > 0) { 
+
+                      _showSwipeAlert(context, 'Swiped Right'); 
+
+                } else if (details.primaryVelocity! < 0) { 
+
+                    _showSwipeAlert(context, 'Swiped Left'); 
+
+                  } 
+
+      },
+
+
+            child: Image.asset(
               'assets/car1.jpg',
               width: 200.0,
               height: 200.0,
               fit: BoxFit.cover,
             ),
-          ],
+        )],
         ),
       ),
     );
   }
 }
 
+void _showSwipeAlert(BuildContext context, String alertText) { 
+  showDialog( 
+    context: context, 
+    builder: (BuildContext context) { 
+      return AlertDialog( 
+title: Text(alertText), 
+actions: <Widget>[ 
+TextButton( 
+onPressed: () { 
+Navigator.of(context).pop(); 
+}, 
+child: const Text('OK'), 
+), 
+], 
+); 
+}, 
+); 
+} 
