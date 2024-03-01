@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:carapp2/main.dart';
+import '../assets/mainn.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
